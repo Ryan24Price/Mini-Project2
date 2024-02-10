@@ -32,8 +32,11 @@ export default function NavBar() {
           <Button color="inherit" component={NavLink} to="/login">
             Login
           </Button>
-          <Button color="inherit" component={NavLink} to="/bitcoin">
-            Bitcoin-Rates
+          <Button color="inherit" component={NavLink} to="/src/pages/ProfilePage.jsx">
+            Profile
+          </Button>
+          <Button color="inherit" component={NavLink} to="/src/pages/AnimeList.jsx">
+            Anime List
           </Button>
         </Toolbar>
       </AppBar>

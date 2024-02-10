@@ -1,22 +1,22 @@
-import { useContext, createContext, useState } from "react";
+// import { useContext, createContext, useState } from "react";
 
-const MoodContext = createContext();
+// const MoodContext = createContext();
 
-export const MoodProvider = (props) => {
-  const [mood, setMood] = useState("😃");
+// export const MoodProvider = (props) => {
+//   const [mood, setMood] = useState("😃");
 
-  const handleMoodChange = () => {
-    setMood ((prevEmoji) => (prevEmoji === "😃" ? "😞" : "😃"));
-    // setMood(newMood);
-  };
+//   const handleMoodChange = () => {
+//     setMood ((prevEmoji) => (prevEmoji === "😃" ? "😞" : "😃"));
+//     // setMood(newMood);
+//   };
 
-  return (
-    <MoodContext.Provider value={{ mood, handleMoodChange }}>
-      {props.children}
-    </MoodContext.Provider>
-  );
-};
+//   return (
+//     <MoodContext.Provider value={{ mood, handleMoodChange }}>
+//       {props.children}
+//     </MoodContext.Provider>
+//   );
+// };
 
-export const useMoodContext = () => {
-  return useContext(MoodContext);
-};
+// export const useMoodContext = () => {
+//   return useContext(MoodContext);
+// };

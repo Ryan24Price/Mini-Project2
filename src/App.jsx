@@ -7,6 +7,12 @@ import { MoodProvider } from "./Context/MoodContext";
 import Emoji from "./components/Emoji";
 import AppRoutes from "./routes/AppRoutes";
 import NavBar from "./components/Navbar"
+import ProfilePage from "./pages/ProfilePage";
+import AnimeList from "./pages/AnimeList";
+import Homepage from "./pages/Homepage";
+
+
+
 
 function App() {
   const [count, setCount] = useState(0);

@@ -1,9 +1,9 @@
-import Emoji from "../components/Emoji";
+// import Emoji from "../components/Emoji";
 
 function Homepage() {
     return (
         <div className="Homepage">
-        <Emoji />
+       
       </div>
   
     )
