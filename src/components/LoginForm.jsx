@@ -161,6 +161,7 @@ export default function LoginForm() {
               autoFocus
               value={userEmail}
               onChange={(e) => setUserEmail(e.target.value)}
+              sx={{ background: 'white' }} // Apply white background directly
             />
             <TextField
               margin="normal"
@@ -173,6 +174,7 @@ export default function LoginForm() {
               autoComplete="current-password"
               value={userPassword}
               onChange={(e) => setUserPassword(e.target.value)}
+              sx={{ background: 'white' }} // Apply white background directly
             />
             <Button
               type="submit"
