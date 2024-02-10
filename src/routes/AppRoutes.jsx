@@ -6,6 +6,7 @@ import BitcoinRates from "../components/BitcoinRates";
 import LoginPage from "../pages/LoginPage";
 import ProfilePage from "../pages/ProfilePage";
 import AnimeList from "../pages/AnimeList";
+import ForumPage from "../pages/ForumPage";
 
 
 

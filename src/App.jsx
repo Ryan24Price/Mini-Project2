@@ -10,6 +10,7 @@ import NavBar from "./components/Navbar"
 import ProfilePage from "./pages/ProfilePage";
 import AnimeList from "./pages/AnimeList";
 import Homepage from "./pages/Homepage";
+import ForumPage from "./pages/ForumPage";
 
 
 

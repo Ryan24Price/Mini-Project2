@@ -3,8 +3,11 @@
 function Homepage() {
     return (
         <div className="Homepage">
-       
-      </div>
+
+          Welcome to my Anime Streamer
+
+        <img src="../assets/images/anime101.png" alt="animestreamer" class="avatar" style="width: 250px;height: 300px;"></img>
+        </div>
   
     )
 }

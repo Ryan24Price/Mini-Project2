@@ -38,6 +38,9 @@ export default function NavBar() {
           <Button color="inherit" component={NavLink} to="/src/pages/AnimeList.jsx">
             Anime List
           </Button>
+          <Button color="inherit" component={NavLink} to="/src/pages/ForumPage.jsx">
+            Forum 
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>
