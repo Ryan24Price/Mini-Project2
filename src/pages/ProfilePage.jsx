@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../Styles/Profile.css"
 
 function ProfilePage() {
   return (

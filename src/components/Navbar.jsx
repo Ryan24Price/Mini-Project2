@@ -16,7 +16,7 @@ export default function NavBar() {
           <Button color="inherit" component={NavLink} to="/profile">
             Profile
           </Button>
-          <Button color="inherit" component={NavLink} to="/animeList">
+          <Button color="inherit" component={NavLink} to="/anime">
             Anime List
           </Button>
           <Button color="inherit" component={NavLink} to="/forum">

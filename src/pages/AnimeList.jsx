@@ -1,213 +1,202 @@
-import React from 'react';
-// If you have a Dashboard.js or similar, import it here
-// import Dashboard from './Dashboard'; // Uncomment if applicable
+import React, { useState } from "react";
+
+// Example array of anime information
+const animeList = [
+  {
+    id: 1,
+    title: "Attack on Titan",
+    image: "src/assets/images/attack on titan.jpg",
+    description: "Enter to view the Newest Releases.",
+  },
+  {
+    id: 2,
+    title: "Chainsaw Man",
+    image: "src/assets/images/chainsaw  man.jpg",
+    description: "Enter to view the Newest Releases.",
+  },
+  {
+    id: 3,
+    title: "Demon Slayer",
+    image: "src/assets/images/demon slayer.jpg",
+    description: "Enter to view the Newest Releases.",
+  },
+  {
+    id: 4,
+    title: "Hunter x Hunter",
+    image: "src/assets/images/hunter hunter.jpg",
+    description: "Enter to view the Newest Releases.",
+  },
+  {
+    id: 5,
+    title: "My Hero Academia",
+    image: "src/assets/images/my hero academia.jpg",
+    description: "Enter to view the Newest Releases.",
+  },
+  {
+    id: 6,
+    title: "Tokyo Ghoul",
+    image: "src/assets/images/tokyo ghoul.jpg",
+    description: "Enter to view the Newest Releases.",
+  },
+  {
+    id: 7,
+    title: "Death Note",
+    image: "src/assets/images/death note.jpg",
+    description: "Enter to view the Newest Releases.",
+  },
+  {
+    id: 8,
+    title: "Jujutsu Kaisen",
+    image: "src/assets/images/jujutsu kaisen.jpg",
+    description: "Enter to view the Newest Releases.",
+  },
+  {
+    id: 9,
+    title: "Dragon Ball Z",
+    image: "src/assets/images/dragon ball z.jpg",
+    description: "Enter to view the Newest Releases.",
+  },
+  {
+    id: 10,
+    title: "Mob Psycho 100",
+    image: "src/assets/images/mob.jpg",
+    description: "Enter to view the Newest Releases.",
+  },
+  {
+    id: 11,
+    title: "Bleach",
+    image: "src/assets/images/bleach.jpg",
+    description: "Enter to view the Newest Releases.",
+  },
+  {
+    id: 12,
+    title: "Ghost in the Shell",
+    image: "src/assets/images/ghost in the shell.jpg",
+    description: "Enter to view the Newest Releases.",
+  },
+];
 
 function AnimeList() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Calculate the end index for slicing, ensuring it doesn't go out of bounds
+  const endIndex = Math.min(currentIndex + 3, animeList.length);
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % animeList.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + animeList.length) % animeList.length
+    );
+  };
+
+  // Calculate indexes for the left, middle, and right images
+  const leftIndex = (currentIndex - 1 + animeList.length) % animeList.length;
+  const rightIndex = (currentIndex + 1) % animeList.length;
+
+  const getImageStyle = (index) => {
+    let style = {
+      margin: ' 0 .5rem'
+    }
+    if (index === currentIndex) {
+      // Middle image
+      return { ...style, height: '400px', width: '250px', objectFit: 'cover' };
+    } else {
+      // Left and right images
+      return { ...style,  height: '350px', width: '200px', objectFit: 'cover' };
+    }
+  };
+
+  const displayAnime = animeList.slice(currentIndex, endIndex);
+
+  const carouselStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: "20px", // Space between carousel and full list
+  };
+
+  const buttonStyle = {
+    cursor: "pointer",
+    padding: "10px",
+    margin: "0 10px",
+    background: "blue",
+    color: "white",
+    border: "none",
+  };
+
+  const imageStyle = {
+    width: "250px", // Adjusted for responsive design
+    height: "auto",
+    objectFit: "cover",
+  };
+
+  const rowStyle = {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+  };
+
+  const colStyle = {
+    maxWidth: "50%", // Adjust for 2 columns layout
+    flex: "0 0 50%",
+    padding: "1rem",
+  };
+
+  // const caraImage = {
+  //   heigh
+  // }
+
   return (
     <>
-      <div className="carousel">
-        <button className="carousel__button carousel__button--left is-hidden">
-          <img src="images/left.svg" alt="left" />
-        </button>
+      <div style={carouselStyle}>
+        <button onClick={handlePrev} style={buttonStyle}>{"<"}</button>
+        
+        {/* Left image */}
+        <img
+          src={animeList[leftIndex].image}
+          alt={animeList[leftIndex].title}
+          style={getImageStyle(leftIndex)}
+        />
 
-        <div className="carousel__track-container">
-          <ul className="carousel__track">
-            <li className="carousel__slide current-slide">
-              <img
-                className="carousel__image d-block w-100"
-                src="../assets/images/yuyu hakusho.jpe"
-                alt="yuyu"
-              />
-            </li>
-            <li className="carousel__slide">
-              <img
-                className="carousel__image d-block w-100"
-                src="../assets/images/demon slayer.jpg"
-                alt="demon"
-              />
-            </li>
-            <li className="carousel__slide">
-              <img
-                className="carousel__image d-block w-100"
-                src="../assets/images/jujutsu kaisen.jpg"
-                alt="juju"
-              />
-            </li>
-          </ul>
-        </div>
+        {/* Middle (current) image */}
+        <img
+          src={animeList[currentIndex].image}
+          alt={animeList[currentIndex].title}
+          style={getImageStyle(currentIndex)}
+        />
 
-        <button className="carousel__button carousel__button--right">
-          <img src="images/right.svg" alt="right" />
-        </button>
-
-        <div className="carousel__nav">
-          <button className="carousel__indicator current-slide"></button>
-          <button className="carousel__indicator"></button>
-          <button className="carousel__indicator"></button>
-        </div>
+        {/* Right image */}
+        <img
+          src={animeList[rightIndex].image}
+          alt={animeList[rightIndex].title}
+          style={getImageStyle(rightIndex)}
+        />
+        
+        <button onClick={handleNext} style={buttonStyle}>{">"}</button>
       </div>
-
-      <div className="row row-cols-1 row-cols-md-4 g-4">
-        <div className="col">
-          <div className="card h-100">
-            <img
-              src="../assets/images/attack on titan.jpg"
-              alt="Attack on Titan"
-              className="card-img-top"
-            />
-            <div className="card-body">
-              <h5 className="card-title">Attack on Titan</h5>
-              <p className="card-text">Enter to view the Newest Releases.</p>
+      <div className="row g-4" style={rowStyle}>
+        {animeList.map((anime) => (
+          <div className="col" key={anime.id} style={colStyle}>
+            <div className="card h-100">
+              <img
+                src={anime.image}
+                alt={anime.title}
+                className="card-img-top"
+                style={imageStyle}
+              />
+              <div className="card-body">
+                <h5 className="card-title">{anime.title}</h5>
+                <p className="card-text">{anime.description}</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="col">
-          <div className="card h-100">
-            <img
-              src="../assets/images/chainsaw man.jpe"
-              alt="Chainsaw Man"
-              className="card-img-top"
-            />
-            <div className="card-body">
-              <h5 className="card-title">Chainsaw Man</h5>
-              <p className="card-text">Enter to view the Newest Releases.</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card h-100">
-            <img
-              src="../assets/images/demon slayer.jpg"
-              alt="Demon Slayer"
-              className="card-img-top"
-            />
-            <div className="card-body">
-              <h5 className="card-title">Demon Slayer</h5>
-              <p className="card-text">Enter to view the Newest Releases.</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card h-100">
-            <img
-              src="../assets/images/hunter hunter.jpg"
-              alt="Hunter x Hunter"
-              className="card-img-top"
-            />
-            <div className="card-body">
-              <h5 className="card-title">Hunter x Hunter</h5>
-              <p className="card-text">Enter to view the Newest Releases.</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card h-100">
-            <img
-              src="../assets/images/my hero academia.jpg"
-              alt="My Hero Academia"
-              className="card-img-top"
-            />
-            <div className="card-body">
-              <h5 className="card-title">My Hero Academia</h5>
-              <p className="card-text">Enter to view the Newest Releases.</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card h-100">
-            <img
-              src="../assets/images/tokyo ghoul.jpg"
-              alt="Tokyo Ghoul"
-              className="card-img-top"
-            />
-            <div className="card-body">
-              <h5 className="card-title">Tokyo Ghoul</h5>
-              <p className="card-text">Enter to view the Newest Releases.</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card h-100">
-            <img
-              src="../assets/images/death note.jpg"
-              alt="Death Note"
-              className="card-img-top"
-            />
-            <div className="card-body">
-              <h5 className="card-title">Death Note</h5>
-              <p className="card-text">Enter to view the Newest Releases.</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card h-100">
-            <img
-              src="../assets/images/jujutsu kaisen.jpg"
-              alt="Jujutsu Kaisen"
-              className="card-img-top"
-            />
-            <div className="card-body">
-              <h5 className="card-title">Jujutsu Kaisen</h5>
-              <p className="card-text">Enter to view the Newest Releases.</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card h-100">
-            <img
-              src="../assets/images/dragon ball z.jpg"
-              alt="Dragon Ball Z"
-              className="card-img-top"
-            />
-            <div className="card-body">
-              <h5 className="card-title">Dragon Ball Z</h5>
-              <p className="card-text">Enter to view the Newest Releases.</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card h-100">
-            <img
-              src="../assets/images/mob.jpg"
-              alt="Mob Psycho 100"
-              className="card-img-top"
-            />
-            <div className="card-body">
-              <h5 className="card-title">Mob Psycho 100</h5>
-              <p className="card-text">Enter to view the Newest Releases.</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card h-100">
-            <img
-              src="../assets/images/bleach.jpg"
-              alt="Bleach"
-              className="card-img-top"
-            />
-            <div className="card-body">
-              <h5 className="card-title">Bleach</h5>
-              <p className="card-text">Enter to view the Newest Releases.</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card h-100">
-            <img
-              src="../assets/images/ghost in the shell.jpg"
-              alt="Ghost in the Shell"
-              className="card-img-top"
-            />
-            <div className="card-body">
-              <h5 className="card-title">Ghost in the Shell</h5>
-              <p className="card-text">Enter to view the Newest Releases.</p>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </>
   );
 }
 
 export default AnimeList;
-

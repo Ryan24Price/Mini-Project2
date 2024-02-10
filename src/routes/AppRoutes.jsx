@@ -6,7 +6,7 @@ import Homepage from "../pages/Homepage";
 import LoginPage from "../pages/LoginPage";
 import ProfilePage from "../pages/ProfilePage";
 import AnimeList from "../pages/AnimeList";
-// import ForumPage from "../pages/ForumPage";
+import ForumPage from "../pages/ForumPage";
 
 
 
@@ -15,8 +15,9 @@ function AppRoutes(props) {
     <Routes className="Routes">
       <Route path="login" element={<LoginPage {...props} />} />
       <Route index element={<Homepage {...props} />} />
-      <Route path="forum" element={<AnimeList {...props} />} />
+      <Route path="anime" element={<AnimeList {...props} />} />
       <Route path="profile" element={<ProfilePage {...props} />} />
+      <Route path="forum" element={<ForumPage {...props} />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
